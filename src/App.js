@@ -7,7 +7,15 @@ class App extends Component {
 		console.log(store);
 		return (
 			<main className='App'>
-				{/* content goes here */}
+				<header>
+					<h1>Noteful</h1>
+				</header>
+				<nav>
+					<Sidebar />
+				</nav>
+				<section>
+					<NotesBox />
+				</section>
 			</main>
 		);
 	}
