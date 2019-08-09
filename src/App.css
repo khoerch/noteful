@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box
+}
+
+header {
+    padding: 5% 25%;
+    border-bottom: black solid 1px;
+    display: flex;
+}
+
+.lower {
+    display: flex;
+}

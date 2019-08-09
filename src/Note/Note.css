@@ -1,0 +1,10 @@
+.Note {
+    border: solid black 1px;
+    margin-bottom: 2%;
+    width: 100%;
+    padding: 2%;
+}
+
+.delete-note {
+    float: right;
+}
