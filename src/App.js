@@ -13,9 +13,10 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			store: store
+			store: store,
 		}
 	}
+
 	render() {
 		return (
 			<main className='App'>
@@ -36,6 +37,12 @@ class App extends Component {
 							<Sidebar store={this.state.store}/>
 						}/>
 
+						<Route path='/folder/:folderId' render={(routerProps) =>
+							<Sidebar 
+								store={this.state.store}
+								/>
+						}/>
+
 						<Route path='/note' render={(routerProps) =>
 							<SideNotes 
 								store={this.state.store}
@@ -51,6 +58,10 @@ class App extends Component {
 						}/>
 						<Route path='/form-note' render={(routerProps) =>
 							<NotesForm store={this.state.store}/>
+						}/>
+
+						<Route path='/folder/:folderId' render={(routerProps) =>
+							<NotesBox store={this.state.store}/>
 						}/>
 
 						<Route path='/note' render={(routerProps) =>
