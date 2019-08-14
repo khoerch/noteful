@@ -5,7 +5,7 @@ import './NotesBox.css';
 
 class NotesBox extends Component {
 	render() {
-        const notes = this.props.store.notes.map((note, i) => {
+        const notes = this.props.notes.map((note, i) => {
             return (
                 <Note 
                     note={note}

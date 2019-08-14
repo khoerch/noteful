@@ -4,10 +4,12 @@ import './SideNotes.css';
 
 class SideNotes extends Component {
 	render() {
+        let folderId = this.props.store.notes.find(note => note.id === this.props.noteId).folderId;
+        let folder = this.props.store.folders.find(folder => folder.id === folderId).name;
 		return (
                 <div className='SideNotes'>
                     <Link to="/">Go back</Link>
-                    <p></p>
+                    <p>{folder}</p>
                 </div>
 		);
 	}

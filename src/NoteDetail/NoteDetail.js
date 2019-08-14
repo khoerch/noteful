@@ -6,7 +6,12 @@ class NoteDetail extends Component {
 	render() {
 		return (
                 <div className='NoteDetail'>
-                    <p>Test</p>
+					<div className="Note">
+                        <h2>{this.props.note.name}</h2>
+                        <p>Date modified on {this.props.note.modified} </p>
+                    </div>
+                    <button className="delete-note">Delete Note</button>
+                    <p>{this.props.note.content}</p>
                 </div>
 		);
 	}

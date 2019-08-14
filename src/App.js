@@ -30,42 +30,43 @@ class App extends Component {
 						<Route exact path='/' render={(routerProps) =>
 							<Sidebar store={this.state.store}/>
 						}/>
+						<Route exact path='/note/:noteId' render={(routerProps) =>
+							<SideNotes 
+							store={this.state.store}
+							noteId={routerProps.match.params.noteId}
+							/>
+						}/>
+						<Route exact path='/folder/:folderId' render={(routerProps) =>
+							<Sidebar store={this.state.store}/>
+						}/>
+
 						<Route path='/form-folder' render={(routerProps) =>
 							<Sidebar store={this.state.store}/>
 						}/>
 						<Route path='/form-note' render={(routerProps) =>
 							<Sidebar store={this.state.store}/>
 						}/>
-
-						<Route path='/folder/:folderId' render={(routerProps) =>
-							<Sidebar 
-								store={this.state.store}
-								/>
-						}/>
-
-						<Route path='/note' render={(routerProps) =>
-							<SideNotes 
-								store={this.state.store}
-								/>
-						}/>
 					</Switch>
 					<Switch>
 						<Route exact path='/' render={(routerProps) =>
-							<NotesBox store={this.state.store}/>
+							<NotesBox notes={this.state.store.notes}/>
 						}/>
+						<Route exact path='/note/:noteId' render={(routerProps) =>
+							<NoteDetail 
+							note={this.state.store.notes.find(note => note.id === routerProps.match.params.noteId)}
+							/>
+						}/>
+						<Route exact path='/folder/:folderId' render={(routerProps) =>
+							<NotesBox 
+							notes={this.state.store.notes.filter(note => note.folderId === routerProps.match.params.folderId)}
+							/>
+						}/>
+
 						<Route path='/form-folder' render={(routerProps) =>
 							<FolderForm store={this.state.store}/>
 						}/>
 						<Route path='/form-note' render={(routerProps) =>
 							<NotesForm store={this.state.store}/>
-						}/>
-
-						<Route path='/folder/:folderId' render={(routerProps) =>
-							<NotesBox store={this.state.store}/>
-						}/>
-
-						<Route path='/note' render={(routerProps) =>
-							<NoteDetail store={this.state.store}/>
 						}/>
 					</Switch>
 				</div>
