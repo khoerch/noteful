@@ -13,9 +13,10 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			store: store
+			store: store,
 		}
 	}
+
 	render() {
 		return (
 			<main className='App'>
