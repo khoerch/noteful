@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import NoteContext from '../NoteContext'
 import './SideNotes.css';
 
 class SideNotes extends Component {
+    static contextType = NoteContext;
+
 	render() {
-        let folderId = this.props.store.notes.find(note => note.id === this.props.noteId).folderId;
-        let folder = this.props.store.folders.find(folder => folder.id === folderId).name;
+        let folderId = this.context.store.notes.find(note => note.id === this.props.noteId).folderId;
+        let folder = this.context.store.folders.find(folder => folder.id === folderId).name;
 		return (
                 <div className='SideNotes'>
                     <Link to="/">Go back</Link>
