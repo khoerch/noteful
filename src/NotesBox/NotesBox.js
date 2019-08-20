@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 import Note from '../Note/Note';
 import './NotesBox.css';
+import NoteContext from '../NoteContext';
 
 class NotesBox extends Component {
+    static contextType = NoteContext;
+
 	render() {
-        const notes = this.props.notes.map((note, i) => {
+        const notes = this.context.store.notes.filter(
+            note => note.folderId === this.props.folderId
+        )
+        .map((note, i) => {
             return (
                 <Note 
                     note={note}

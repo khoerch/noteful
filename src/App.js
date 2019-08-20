@@ -38,15 +38,12 @@ class App extends Component {
 							))}
 							<Route exact path='/note/:noteId' render={(routerProps) =>
 								<SideNotes 
-								store={this.state.store}
 								noteId={routerProps.match.params.noteId}
 								/>
 							}/>
 						</Switch>
 						<Switch>
-							<Route exact path='/' render={(routerProps) =>
-								<NotesBox notes={this.state.store.notes}/>
-							}/>
+							<Route exact path='/' component={NotesBox}/>
 							<Route exact path='/note/:noteId' render={(routerProps) =>
 								<NoteDetail 
 								note={this.state.store.notes.find(note => note.id === routerProps.match.params.noteId)}
@@ -54,16 +51,12 @@ class App extends Component {
 							}/>
 							<Route exact path='/folder/:folderId' render={(routerProps) =>
 								<NotesBox 
-								notes={this.state.store.notes.filter(note => note.folderId === routerProps.match.params.folderId)}
+								folderId={routerProps.match.params.folderId}
 								/>
 							}/>
 
-							<Route path='/form-folder' render={(routerProps) =>
-								<FolderForm store={this.state.store}/>
-							}/>
-							<Route path='/form-note' render={(routerProps) =>
-								<NotesForm store={this.state.store}/>
-							}/>
+							<Route path='/form-folder' component={FolderForm}/>
+							<Route path='/form-note'  component={NotesForm}/>
 						</Switch>
 					</NoteContext.Provider>
 				</div>
