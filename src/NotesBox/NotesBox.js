@@ -8,9 +8,9 @@ class NotesBox extends Component {
     static contextType = NoteContext;
 
 	render() {
-        const notes = this.context.store.notes.filter(
+        const notes = (this.props.folderId == null ? this.context.store.notes : this.context.store.notes.filter(
             note => note.folderId === this.props.folderId
-        )
+        ))
         .map((note, i) => {
             return (
                 <Note 

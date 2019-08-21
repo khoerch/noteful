@@ -14,8 +14,37 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			store: store,
+			store: {
+				folders: [],
+				notes: []
+			}
 		}
+	}
+
+	componentDidMount() {
+		Promise.all([
+			fetch('http://localhost:9090/folders'), 
+			fetch('http://localhost:9090/notes')
+		])
+			.then(([resFolders, resNotes]) => {
+				if(!resFolders.ok) {
+					return resFolders.json().then(e => Promise.reject(e))
+				}
+				if(!resNotes.ok) {
+					return resNotes.json().then(e => Promise.reject(e))
+				}
+
+				return Promise.all([resFolders.json(), resNotes.json()])
+			})
+			.then(([folders, notes]) => {
+				this.setState({
+					store: {
+						folders: folders,
+						notes: notes
+					}
+				})
+			})
+			.catch(err => console.error({err}))
 	}
 
 	render() {
