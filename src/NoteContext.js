@@ -1,8 +1,8 @@
 import React from 'react';
-import store from './dummy-store';
 
 const NoteContext = React.createContext({
-    store: store
+    store: {},
+    deleteNote: () => {},
 })
 
 export default NoteContext;
