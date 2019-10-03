@@ -9,6 +9,7 @@ import SideNotes from './SideNotes/SideNotes';
 import NoteDetail from './NoteDetail/NoteDetail';
 import NoteContext from'./NoteContext'
 import './App.css';
+import { tsThisType } from '@babel/types';
 
 class App extends Component {
 	constructor(props) {
@@ -47,9 +48,16 @@ class App extends Component {
 			.catch(err => console.error({err}))
 	}
 
+	handleDeleteNote = noteId => {
+		this.setState({
+			notes: this.state.store.notes.filter(note => note.id !== noteId)
+		})
+	}
+
 	render() {
 		const contextValue = {
-			store: this.state.store
+			store: this.state.store,
+			deleteNote: this.handleDeleteNote
 		}
 
 		return (

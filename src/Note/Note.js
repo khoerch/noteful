@@ -13,6 +13,7 @@ class Note extends Component {
     handleClickDelete = e => {
         e.preventDefault()
         const noteId = this.props.note.id
+        console.log(noteId)
 
         fetch(`http://localhost:9090/notes/${noteId}`, {
             method: 'DELETE',
@@ -27,7 +28,8 @@ class Note extends Component {
             })
             .then(() => {
                 this.context.deleteNote(noteId)
-                this.props.onDeleteNote(noteId)
+                console.log(this.props)
+                //this.props.value.history.push(`/`)
             })
             .catch(error => {
                 console.log({ error })
