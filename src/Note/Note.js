@@ -28,8 +28,6 @@ class Note extends Component {
             })
             .then(() => {
                 this.context.deleteNote(noteId)
-                console.log(this.props)
-                //this.props.value.history.push(`/`)
             })
             .catch(error => {
                 console.log({ error })

@@ -29,7 +29,8 @@ class NoteDetail extends Component {
                 return res.json()
             })
             .then(() => {
-                //this.props.value.history.push(`/`)
+                this.props.history.push(`/`)
+                this.context.deleteNote(noteId)
             })
             .catch(error => {
                 console.log({ error })

@@ -50,7 +50,10 @@ class App extends Component {
 
 	handleDeleteNote = noteId => {
 		this.setState({
-			notes: this.state.store.notes.filter(note => note.id !== noteId)
+			store: {
+				...this.state.store,
+				notes: this.state.store.notes.filter(note => note.id !== noteId)
+			}
 		})
 	}
 
@@ -84,6 +87,7 @@ class App extends Component {
 							<Route exact path='/note/:noteId' render={(routerProps) =>
 								<NoteDetail 
 								note={this.state.store.notes.find(note => note.id === routerProps.match.params.noteId)}
+								{...routerProps}
 								/>
 							}/>
 							<Route exact path='/folder/:folderId' render={(routerProps) =>
